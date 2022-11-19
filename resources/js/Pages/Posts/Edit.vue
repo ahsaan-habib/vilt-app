@@ -1,6 +1,6 @@
 <script setup>
 import AppLayout from "@/Layouts/AppLayout.vue";
-// import ValidationErrors from '@/Jetstream/ValidationErrors.vue'
+import ValidationErrors from "@/Jetstream/ValidationErrors.vue";
 // import Label from '@/Jetstream/Label.vue'
 // import Input from '@/Jetstream/Input.vue'
 // import Button from '@/Jetstream/Button.vue'
@@ -8,6 +8,7 @@ import { Head, Link, useForm } from "@inertiajs/inertia-vue3";
 
 import InputLabel from "@/Components/InputLabel.vue";
 import TextInput from "@/Components/TextInput.vue";
+import InputError from "@/Components/InputError.vue";
 
 import PrimaryButton from "@/Components/PrimaryButton.vue";
 
@@ -25,7 +26,11 @@ const form = useForm({
         <h1 class="pl-6 py-2 text-3xl font-bold bg-gray-500 text-white">
             Posts
         </h1>
-        <ValidationErrors class="bg-red-100 p-4" />
+        <ValidationErrors
+            :hasError="form.hasErrors"
+            message="Invalid Form Data"
+        />
+
         <div
             class="min-h-screen flex flex-col sm:justify-start items-center pt-6 sm:pt-0 bg-gray-100"
         >
@@ -44,6 +49,7 @@ const form = useForm({
                             class="mt-1 block w-full"
                             autofocus
                         />
+                        <InputError :message="form.errors.title" class="mt-2" />
                     </div>
                     <div class="mt-4">
                         <InputLabel for="body" value="Body" />
@@ -53,6 +59,7 @@ const form = useForm({
                             type="text"
                             class="mt-1 block w-full"
                         />
+                        <InputError :message="form.errors.body" class="mt-2" />
                     </div>
                     <div class="flex items-center justify-end mt-4">
                         <PrimaryButton

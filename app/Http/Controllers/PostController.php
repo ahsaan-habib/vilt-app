@@ -29,6 +29,7 @@ class PostController extends Controller
                 'body' => ['required'],
             ])
         );
+
         return Redirect::route('posts')->with('success', 'Post created.');
     }
 
