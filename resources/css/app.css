@@ -1,3 +1,159 @@
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
+
+@layer components {
+    .card {
+        @apply bg-white  rounded-lg;
+        box-shadow: rgba(33, 35, 38, 0.1) 0px 10px 10px -10px;
+
+        .card-img {
+            @apply bg-gray-10 overflow-hidden flex items-center justify-center w-auto h-60 md:h-36;
+        }
+
+        .card-img img {
+            @apply h-full w-auto;
+        }
+    }
+
+    @media screen(sm) {
+        /* ... */
+    }
+
+    .content-area {
+        height: calc(100vh - theme(spacing.12));
+    }
+}
+
+@layer utilities {
+    .uni-font {
+        font-family: Roboto-Regular, "Helvetica Neue", Helvetica, Tahoma, Arial,
+            Sans-serif;
+    }
+
+    .navbar {
+        @apply flex justify-between w-full h-14 z-50 shadow-sm dark:shadow px-4 py-2 md:px-12;
+    }
+
+    .NavbarSticky {
+        position: fixed !important;
+        top: 0;
+        z-index: 1000;
+        height: 48px !important;
+        width: 100%;
+        animation: growDown 500ms ease-in-out forwards;
+        transform-origin: top center;
+        @apply bg-white dark:bg-zinc-800;
+    }
+
+    @keyframes growDown {
+        0% {
+            transform: scaleY(0);
+        }
+        80% {
+            transform: scaleY(1.1);
+        }
+        100% {
+            transform: scaleY(1);
+        }
+    }
+
+    @keyframes growDown2 {
+        0% {
+            transform: scaleY(0);
+        }
+
+        100% {
+            transform: scaleY(1);
+        }
+    }
+
+    .grow-down {
+        animation: growDown2 200ms ease-in-out forwards;
+        transform-origin: top center;
+    }
+
+    .nav-item {
+        @apply mx-0 md:mx-2 md:my-0 first:mt-0 text-center;
+    }
+
+    .nav-item:hover .nav-link,
+    .nav-item.active .nav-link,
+    .active .drop-nav-link,
+    .drop-nav-link:hover {
+        @apply bg-primary-default dark:bg-primary-default text-white shadow-md;
+    }
+
+    .nav-link {
+        @apply text-primary-default dark:text-white bg-white/80  md:bg-white dark:bg-neutral-900
+      leading-9 md:leading-6 rounded md:rounded-3xl shadow-md
+      px-10 py-1.5 md:my-2 my-0 md:px-4 md:py-1;
+    }
+
+    .drop-nav-link {
+        @apply text-primary-default dark:text-white bg-white/80  dark:bg-neutral-900
+      rounded shadow-md px-10 py-1.5 my-4 leading-9;
+        margin-left: -20px;
+    }
+
+    .tab {
+        @apply hover:border-b-2 inline-block p-4 rounded-t-lg  hover:text-blue-600 dark:hover:text-blue-500 hover:border-blue-600 dark:hover:border-blue-500;
+    }
+
+    .active-tab {
+        @apply border-b-2 text-blue-600 dark:text-blue-500  border-blue-600 dark:border-blue-500;
+    }
+
+    .btn-primary-sm {
+        @apply bg-white dark:bg-neutral-900 dark:font-medium text-primary-default shadow-md rounded px-2 py-0.5;
+    }
+
+    .btn-primary {
+        @apply bg-white dark:bg-neutral-700 dark:text-gray-200 dark:hover:text-white text-primary-default shadow-lg rounded hover:bg-primary-default dark:hover:bg-primary-default hover:text-white;
+    }
+
+    .container-bg2 {
+        background-color: #f8f9fa;
+    }
+
+    .container-shadow {
+        box-shadow: 0 20px 27px 0 rgb(0 0 0 / 5%);
+        border-radius: 1rem;
+    }
+
+    .dark .container-shadow {
+        box-shadow: 0 20px 27px 0 rgb(0 0 0 / 25%);
+        border-radius: 1rem;
+    }
+
+    .mod-shadow {
+        box-shadow: rgb(16 0 255 / 10%) 0px 40px 80px -18px,
+            rgb(27 0 255 / 25%) 0px 25px 50px -24px,
+            rgb(147 147 147 / 35%) 0px -1px 3px 0px inset;
+        border-radius: 1rem;
+    }
+
+    .thin-shadow {
+        box-shadow: rgba(33, 35, 38, 0.1) 0px 10px 10px -10px;
+    }
+
+    .input {
+        @apply rounded rounded-b-none block py-2.5 px-0 w-full text-sm text-gray-900 bg-transparent border-0 border-b-2 border-gray-300 appearance-none dark:text-white dark:border-gray-600 dark:focus:border-blue-500 focus:outline-none focus:ring-0 focus:border-blue-600 autofill:bg-yellow-200/100;
+    }
+
+    .label {
+        @apply peer-focus:font-medium absolute text-sm text-gray-500 dark:text-gray-400 duration-300 transform -translate-y-7 scale-75 top-3 -z-10 origin-[0] peer-focus:left-0 peer-focus:text-blue-600 peer-focus:dark:text-blue-500 peer-placeholder-shown:scale-100 peer-placeholder-shown:translate-y-0 peer-focus:scale-75 peer-focus:-translate-y-7;
+    }
+
+    input:autofill {
+        @apply bg-yellow-200/100 !important;
+    }
+    input::-webkit-outer-spin-button,
+    input::-webkit-inner-spin-button {
+        -webkit-appearance: none;
+    }
+
+    .image-preview img {
+        @apply h-40 w-auto mx-3 my-2 border-2 rounded-lg dark:border-neutral-600 border-neutral-300;
+    }
+}
